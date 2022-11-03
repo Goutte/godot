@@ -31,6 +31,7 @@
 #ifndef MESH_STORAGE_RD_H
 #define MESH_STORAGE_RD_H
 
+#include "core/config/project_settings.h"
 #include "core/templates/local_vector.h"
 #include "core/templates/rid_owner.h"
 #include "core/templates/self_list.h"
@@ -66,6 +67,7 @@ private:
 	/* Mesh */
 
 	RID mesh_default_rd_buffers[DEFAULT_RD_BUFFER_MAX];
+	unsigned int max_mesh_surfaces = GLOBAL_GET("rendering/limits/geometry/max_mesh_surfaces");
 
 	struct MeshInstance;
 

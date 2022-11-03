@@ -3027,6 +3027,8 @@ void RenderingServer::init() {
 
 	GLOBAL_DEF("rendering/limits/cluster_builder/max_clustered_elements", 512);
 	ProjectSettings::get_singleton()->set_custom_property_info("rendering/limits/cluster_builder/max_clustered_elements", PropertyInfo(Variant::FLOAT, "rendering/limits/cluster_builder/max_clustered_elements", PROPERTY_HINT_RANGE, "32,8192,1"));
+	GLOBAL_DEF("rendering/limits/geometry/max_mesh_surfaces", DEFAULT_MAX_MESH_SURFACES);
+	ProjectSettings::get_singleton()->set_custom_property_info("rendering/limits/geometry/max_mesh_surfaces", PropertyInfo(Variant::INT, "rendering/limits/geometry/max_mesh_surfaces", PROPERTY_HINT_RANGE, "1,65536,1"));
 
 	// OpenGL limits
 	GLOBAL_DEF_RST("rendering/limits/opengl/max_renderable_elements", 65536);

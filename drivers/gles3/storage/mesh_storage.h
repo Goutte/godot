@@ -205,6 +205,8 @@ private:
 	/* Mesh */
 
 	mutable RID_Owner<Mesh, true> mesh_owner;
+//	unsigned int max_mesh_surfaces = GLOBAL_GET("rendering/limits/geometry/max_mesh_surfaces");
+	unsigned int max_mesh_surfaces = RS::DEFAULT_MAX_MESH_SURFACES;
 
 	void _mesh_surface_generate_version_for_input_mask(Mesh::Surface::Version &v, Mesh::Surface *s, uint32_t p_input_mask, MeshInstance::Surface *mis = nullptr);
 

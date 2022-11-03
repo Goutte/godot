@@ -30,6 +30,7 @@
 
 #ifdef GLES3_ENABLED
 
+#include "core/config/project_settings.h"
 #include "mesh_storage.h"
 #include "material_storage.h"
 #include "utilities.h"
@@ -44,6 +45,7 @@ MeshStorage *MeshStorage::get_singleton() {
 
 MeshStorage::MeshStorage() {
 	singleton = this;
+	max_mesh_surfaces = GLOBAL_GET("rendering/limits/geometry/max_mesh_surfaces");
 }
 
 MeshStorage::~MeshStorage() {
@@ -102,7 +104,7 @@ void MeshStorage::mesh_add_surface(RID p_mesh, const RS::SurfaceData &p_surface)
 	Mesh *mesh = mesh_owner.get_or_null(p_mesh);
 	ERR_FAIL_COND(!mesh);
 
-	ERR_FAIL_COND(mesh->surface_count == RS::MAX_MESH_SURFACES);
+	ERR_FAIL_COND_MSG(mesh->surface_count == max_mesh_surfaces, "Maximum amount of surfaces per mesh reached.  Increase rendering/limits/geometry/max_mesh_surfaces in project settings if you need more.");
 
 #ifdef DEBUG_ENABLED
 	//do a validation, to catch errors first
